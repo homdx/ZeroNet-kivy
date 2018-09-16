@@ -46,6 +46,10 @@ ADD Makefile .
 ADD tool.sh .
 RUN make -C . env
 
-RUN rm -rfv /home
-RUN mkdir /home
-RUN chmod 777 /home
+RUN 'echo -e "EXEC=docker\nDOCKER_IMAGE=kivy\nDISABLE_PROGRESS=1" > .env' \
+  && bash ./tool.sh prebuild \
+  && make _ci
+
+#RUN rm -rfv /home
+#RUN mkdir /home
+#RUN chmod 777 /home
