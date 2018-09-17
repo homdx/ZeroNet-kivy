@@ -46,6 +46,8 @@ ADD Makefile .
 ADD tool.sh .
 RUN make -C . env
 
+COPY . .
+
 RUN bash ./tool.sh prebuild \
   && make _ci
 
