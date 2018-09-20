@@ -48,7 +48,8 @@ RUN make -C . env
 
 COPY . .
 
-RUN bash ./tool.sh prebuild \
+RUN 'echo -e "EXEC=docker\nDOCKER_IMAGE=kivy\nDISABLE_PROGRESS=1" > .env' \
+  && bash ./tool.sh prebuild \
   && make _ci
 
 #RUN rm -rfv /home
